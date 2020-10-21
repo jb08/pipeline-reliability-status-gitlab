@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Gives you data to help find and fix your persistently flaky pipeline jobs!! Calculates historical CI/CD master-branch pipeline reliability using the Gitlab Api.
 
-Things you may want to cover:
+## How to run
 
-* Ruby version
+Retrieve your gitlab host, ie. gitlab.example.com.
 
-* System dependencies
+Retrieve your project (repo) id, ie. 124.
 
-* Configuration
+Retrieve your personal gitlab access token with api-rights. Instructions [here](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html).
 
-* Database creation
+Determine how many 100-page pipelines you want, ie. 10 (1000 most-recent master-branch pipelines).
 
-* Database initialization
+```
+$ bundle install
+$ bundle exec rails db:create db:migrate
+$ bin/rake "ingest_job_runs[YOUR-GITLAB-HOST, YOUR-GITLAB-ACCESS-TOKEN-HERE, YOUR_PROJECT_ID, PAGE_MAX]"
+$ bin/rake "output_metrics_csv[]"
+> Pipeline reliability metrics outputed to job_reliability_stats_output.csv
+```
 
-* How to run the test suite
+### Sample logs
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+ingesting pipelines page 1
+ingesting jobs from pipeline 125
+ingesting jobs from pipeline 126
+ingesting jobs from pipeline 127
+ingesting jobs from pipeline 128
+ingesting jobs from pipeline 129
+ingesting jobs from pipeline 130
+ingesting jobs from pipeline 131
+...
+ingesting pipelines page 2
+ingesting jobs from pipeline 132
+ingesting jobs from pipeline 133
+...
+jobs ingested successfully in 58 secs
 
-* Deployment instructions
-
-* ...
+Pipeline reliability metrics outputed to job_reliability_stats_output.csv
+```

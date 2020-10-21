@@ -1,0 +1,122 @@
+[
+  {
+    "id": 580,
+    "status": "failed",
+    "stage": "test",
+    "name": "integration_tests",
+    "ref": "master",
+    "tag": false,
+    "coverage": null,
+    "allow_failure": false,
+    "created_at": "2020-10-21T14:24:09.434Z",
+    "started_at": "2020-10-21T14:24:11.686Z",
+    "finished_at": "2020-10-21T14:40:24.153Z",
+    "duration": 97.467215,
+    "pipeline": {
+      "id": 1250,
+      "sha": "9ca7",
+      "ref": "master",
+      "status": "failed",
+      "created_at": "2020-10-21T08:53:31.296Z",
+      "updated_at": "2020-10-21T14:40:24.442Z",
+      "web_url": "https://gitlab.example.com/platform/foo/-/pipelines/12"
+    },
+    "web_url": "https://gitlab.example.com/platform/foo/-/jobs/5"
+  },
+  {
+    "id": 580,
+    "status": "success",
+    "stage": "test",
+    "name": "integration_tests",
+    "ref": "master",
+    "tag": false,
+    "coverage": null,
+    "allow_failure": false,
+    "created_at": "2020-10-21T11:02:08.798Z",
+    "started_at": "2020-10-21T11:02:11.219Z",
+    "finished_at": "2020-10-21T11:18:03.053Z",
+    "duration": 95.834254,
+    "pipeline": {
+      "id": 124,
+      "sha": "123",
+      "ref": "master",
+      "status": "success",
+      "created_at": "2020-10-21T03:56:57.330Z",
+      "updated_at": "2020-10-21T11:41:37.761Z",
+      "web_url": "https://gitlab.example.com/platform/foo/-/pipelines/12"
+    },
+    "web_url": "https://gitlab.example.com/platform/foo/-/jobs/58"
+  },
+  {
+    "id": 580,
+    "status": "success",
+    "stage": "test",
+    "name": "integration_tests",
+    "ref": "master",
+    "tag": false,
+    "coverage": null,
+    "allow_failure": false,
+    "created_at": "2020-10-21T11:02:08.798Z",
+    "started_at": "2020-10-21T11:02:11.219Z",
+    "finished_at": "2020-10-21T11:18:03.053Z",
+    "duration": 95.834254,
+    "pipeline": {
+      "id": 124,
+      "sha": "123",
+      "ref": "master",
+      "status": "success",
+      "created_at": "2020-10-21T03:56:57.330Z",
+      "updated_at": "2020-10-21T11:41:37.761Z",
+      "web_url": "https://gitlab.example.com/platform/foo/-/pipelines/1"
+    },
+    "web_url": "https://gitlab.example.com/platform/foo/-/jobs/12"
+  },
+  {
+    "id": 59,
+    "status": "success",
+    "stage": "test",
+    "name": "integration_tests",
+    "ref": "master",
+    "tag": false,
+    "coverage": null,
+    "allow_failure": false,
+    "created_at": "2020-10-21T11:02:08.798Z",
+    "started_at": "2020-10-21T11:02:11.219Z",
+    "finished_at": "2020-10-21T11:18:03.053Z",
+    "duration": 95.834254,
+    "pipeline": {
+      "id": 124,
+      "sha": "123",
+      "ref": "master",
+      "status": "success",
+      "created_at": "2020-10-21T03:56:57.330Z",
+      "updated_at": "2020-10-21T11:41:37.761Z",
+      "web_url": "https://gitlab.example.com/platform/foo/-/pipelines/12"
+    },
+    "web_url": "https://gitlab.example.com/platform/foo/-/jobs/58"
+  },
+  {
+    "id": 581,
+    "status": "success",
+    "stage": "test",
+    "name": "unit tests 1 / 2",
+    "ref": "master",
+    "tag": false,
+    "coverage": null,
+    "allow_failure": false,
+    "created_at": "2020-09-22T11:02:08.798Z",
+    "started_at": "2020-09-22T11:02:11.219Z",
+    "finished_at": "2020-09-22T11:18:03.053Z",
+    "duration": 95.834254,
+    "pipeline": {
+      "id": 124,
+      "sha": "123",
+      "ref": "master",
+      "status": "success",
+      "created_at": "2020-09-22T03:56:57.330Z",
+      "updated_at": "2020-09-22T11:41:37.761Z",
+      "web_url": "https://gitlab.example.com/platform/foo/-/pipelines/12"
+    },
+    "web_url": "https://gitlab.example.com/platform/foo/-/jobs/3"
+  }
+]
