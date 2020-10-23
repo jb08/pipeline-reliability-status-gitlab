@@ -41,3 +41,4 @@ yarn-debug.log*
 .yarn-integrity
 
 job_reliability_stats_output.csv
+.idea/*
