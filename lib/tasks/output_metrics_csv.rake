@@ -5,18 +5,21 @@ desc 'output pipeline reliability metrics'
 task :output_metrics_csv, [] do |_t, _args|
   puts 'calculating job statistics'
 
-  puts "there are a total of #{JobRun.count} job_runs"
-  JobRun.all.each_with_index do |job_run, i|
-    puts "computed stats for #{i} job_runs" if (i % 1000).zero?
+  unprocessed_job_runs = JobRun.where(processed: false)
+  puts "there are a total of #{unprocessed_job_runs.count} unprocessed job_runs"
+  unprocessed_job_runs.each_with_index do |job_run, i|
+    puts "computed stats for #{i} job_runs" if (i % 100).zero?
 
     date_job_stat = JobDayStatistics.find_or_create_by!(job_id: job_run.job.id,
                                                         created_date: job_run.created_date)
 
     date_job_stat.increment!(:success_count) if job_run.status == JobRun::SUCCESS
     date_job_stat.increment!(:failed_count) if job_run.status == JobRun::FAILED
+    job_run.update!(processed: true)
   end
   puts 'done calculating job statistics'
 
+  puts 'starting outputting pipeline reliability metrics'
   filename = 'job_reliability_stats_output.csv'
   CSV.open(filename, 'w') do |csv|
     oldest_date = JobDayStatistics.oldest_date

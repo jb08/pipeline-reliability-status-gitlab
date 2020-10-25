@@ -15,7 +15,7 @@ task :ingest_job_runs, [:gitlab_host, :gitlab_access_token, :project_id, :page_m
 
     (1..PAGE_MAX).each do |page|
       puts "ingesting pipelines page #{page}"
-      pipelines_options = { query: { page: page, per_page: 10 },
+      pipelines_options = { query: { page: page, per_page: 100 },
                             headers: { 'private-token' => GITLAB_ACCESS_TOKEN } }
       pipelines_response = HTTParty.get("https://#{GITLAB_HOST}#{PATH_PIPELINES}", pipelines_options)
 
@@ -23,7 +23,9 @@ task :ingest_job_runs, [:gitlab_host, :gitlab_access_token, :project_id, :page_m
 
       pipelines.each do |pipeline|
         id = pipeline[:id]
-        p = Pipeline.find_or_create_by!(resource_id: id)
+        raise "stopping ingesting pipelines since pipeline #{id} already ingested" if Pipeline.find_by(resource_id: id)
+
+        p = Pipeline.create!(resource_id: id)
         puts "ingesting jobs from pipeline #{id}"
 
         path_jobs = "/api/v4/projects/#{GITLAB_PROJECT_ID}/pipelines/#{id}/jobs?scope[]=#{JobRun::FAILED}&scope[]=#{JobRun::SUCCESS}"

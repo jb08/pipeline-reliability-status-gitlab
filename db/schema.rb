@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_021_154_743) do
+ActiveRecord::Schema.define(version: 20_201_025_221_843) do
   create_table 'job_day_statistics', force: :cascade do |t|
     t.string 'job_id', null: false
     t.date 'created_date', null: false
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20_201_021_154_743) do
     t.integer 'duration'
     t.string 'job_id'
     t.string 'pipeline_id'
+    t.boolean 'processed', default: false
+    t.index ['processed'], name: 'index_job_runs_on_processed'
   end
 
   create_table 'jobs', force: :cascade do |t|
