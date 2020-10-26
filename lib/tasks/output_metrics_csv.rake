@@ -31,7 +31,7 @@ task :output_metrics_csv, [] do |_t, _args|
       puts "outputting stats for job: #{job.name}"
       data_row = [job.name, job.job_run.count]
 
-      (oldest_date...most_recent_date).reverse_each do |day|
+      (oldest_date..most_recent_date).reverse_each do |day|
         js = JobDayStatistics.find_by(job_id: job.id, created_date: day)
         data_row.concat([js&.success_rate])
       end
