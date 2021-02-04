@@ -25,6 +25,25 @@ The rake task outputs a csv file.
 
 ![sample_output](./lib/assets/sample_pipeline_output.png)
 
+### Models
+
+```
+> Job.find_by(name: 'deploy_development')
+=> #<Job id: 12, name: "deploy_development">
+
+> Job.find_by(name: 'deploy_development').job_run.count
+=> 350
+
+# todays jobs
+> Job.find_by(name: 'deploy_development').job_run.select{ |job_run| job_run.finished_at > Time.current.beginning_of_day }.count
+=> 2
+
+irb(main):050:0> Job.find_by(name: 'deploy_development').job_run.select{ |job_run| job_run.finished_at > Time.current.beginning_of_day }.pluck(:resource_id, :status)
+=> [["331281", "failed"], ["721123", "failed"]]
+
+# view job logs at https://<your-gitlab-host>/<folder>/<repo>/-/jobs/721123
+```
+
 ### Sample logs
 
 ```
